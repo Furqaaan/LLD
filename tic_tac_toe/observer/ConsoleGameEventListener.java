@@ -1,8 +1,8 @@
-package observer;
+package tic_tac_toe.observer;
 
-import models.Position;
-import models.Symbol;
-import state.GameState;
+import tic_tac_toe.models.Position;
+import tic_tac_toe.models.Symbol;
+import tic_tac_toe.state.GameState;
 
 public class ConsoleGameEventListener implements GameEventListener {
     @Override
@@ -15,3 +15,4 @@ public class ConsoleGameEventListener implements GameEventListener {
         System.out.println("Game state changed to: " + state);
     }
 }
+

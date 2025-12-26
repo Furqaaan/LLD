@@ -1,9 +1,9 @@
-package strategy;
+package tic_tac_toe.strategy;
 
 import java.util.Scanner;
 
-import models.Board;
-import models.Position;
+import tic_tac_toe.models.Board;
+import tic_tac_toe.models.Position;
 
 public class HumanPlayerStrategy implements PlayerStrategy {
     String playerName;
@@ -40,3 +40,4 @@ public class HumanPlayerStrategy implements PlayerStrategy {
         }
     }
 }
+

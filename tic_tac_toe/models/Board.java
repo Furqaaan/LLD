@@ -1,14 +1,14 @@
-package models;
+package tic_tac_toe.models;
 
-import state.GameContext;
+import tic_tac_toe.state.GameContext;
 import java.util.List;
-import observer.GameEventListener;
+import tic_tac_toe.observer.GameEventListener;
 import java.util.ArrayList;
-import state.GameState;
-import state.XWonState;
-import state.OWonState;
-import state.InProgressState;
-import state.DrawState;
+import tic_tac_toe.state.GameState;
+import tic_tac_toe.state.XWonState;
+import tic_tac_toe.state.OWonState;
+import tic_tac_toe.state.InProgressState;
+import tic_tac_toe.state.DrawState;
 
 public class Board {
     private int rows;
@@ -161,3 +161,4 @@ public class Board {
         }
     }
 }
+

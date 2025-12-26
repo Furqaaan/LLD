@@ -1,7 +1,9 @@
-import strategy.HumanPlayerStrategy;
-import strategy.PlayerStrategy;
-import controller.TicTacToeGame;
-import factory.SimplePlayerFactory;
+package tic_tac_toe;
+
+import tic_tac_toe.strategy.HumanPlayerStrategy;
+import tic_tac_toe.strategy.PlayerStrategy;
+import tic_tac_toe.controller.TicTacToeGame;
+import tic_tac_toe.factory.SimplePlayerFactory;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,3 +15,4 @@ public class Main {
         game.play();
     }
 }
+

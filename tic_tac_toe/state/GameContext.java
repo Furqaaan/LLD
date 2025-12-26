@@ -1,6 +1,6 @@
-package state;
+package tic_tac_toe.state;
 
-import models.Player;
+import tic_tac_toe.models.Player;
 
 public class GameContext {
     private GameState currentState;
@@ -17,7 +17,8 @@ public class GameContext {
         return currentState;
     }
 
-    public void next(Player player , boolean hasWon) {
+    public void next(Player player, boolean hasWon) {
         currentState.next(this, player, hasWon);
     }
 }
+

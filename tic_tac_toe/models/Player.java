@@ -1,6 +1,6 @@
-package models;
+package tic_tac_toe.models;
 
-import strategy.PlayerStrategy;
+import tic_tac_toe.strategy.PlayerStrategy;
 
 public class Player {
     Symbol symbol;
@@ -19,3 +19,4 @@ public class Player {
         return playerStrategy;
     }
 }
+

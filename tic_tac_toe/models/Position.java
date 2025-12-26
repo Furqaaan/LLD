@@ -1,4 +1,5 @@
-package models;
+package tic_tac_toe.models;
+
 public class Position {
     int x;
     int y;
@@ -21,3 +22,4 @@ public class Position {
         return "(x=" + x + ", y=" + y + ")";
     }
 }
+

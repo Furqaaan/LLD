@@ -1,11 +1,11 @@
-package state;
+package tic_tac_toe.state;
 
-import models.Player;
-import models.Symbol;
+import tic_tac_toe.models.Player;
+import tic_tac_toe.models.Symbol;
 
 public class OTurnState implements GameState {
     @Override
-    public void next(GameContext context, Player player , boolean hasWon) {
+    public void next(GameContext context, Player player, boolean hasWon) {
         if (hasWon) {
             if (player.getSymbol() == Symbol.O) {
                 context.setState(new OWonState());
@@ -22,3 +22,4 @@ public class OTurnState implements GameState {
         return false;
     }
 }
+

@@ -1,16 +1,16 @@
-package controller;
+package tic_tac_toe.controller;
 
-import models.Board;
-import models.Player;
-import state.GameContext;
-import models.Symbol;
-import state.XTurnState;
-import strategy.PlayerStrategy;
-import models.Position;
-import state.GameState;
-import state.XWonState;
-import state.OWonState;
-import factory.PlayerFactory;
+import tic_tac_toe.models.Board;
+import tic_tac_toe.models.Player;
+import tic_tac_toe.state.GameContext;
+import tic_tac_toe.models.Symbol;
+import tic_tac_toe.state.XTurnState;
+import tic_tac_toe.strategy.PlayerStrategy;
+import tic_tac_toe.models.Position;
+import tic_tac_toe.state.GameState;
+import tic_tac_toe.state.XWonState;
+import tic_tac_toe.state.OWonState;
+import tic_tac_toe.factory.PlayerFactory;
 
 public class TicTacToeGame implements BoardGames {
     private Board board;
@@ -62,3 +62,4 @@ public class TicTacToeGame implements BoardGames {
         }
     }
 }
+

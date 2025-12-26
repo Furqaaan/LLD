@@ -1,8 +1,8 @@
-package factory;
+package tic_tac_toe.factory;
 
-import models.Player;
-import models.Symbol;
-import strategy.PlayerStrategy;
+import tic_tac_toe.models.Player;
+import tic_tac_toe.models.Symbol;
+import tic_tac_toe.strategy.PlayerStrategy;
 
 public class SimplePlayerFactory implements PlayerFactory {
     @Override
@@ -10,3 +10,4 @@ public class SimplePlayerFactory implements PlayerFactory {
         return new Player(symbol, strategy);
     }
 }
+
