@@ -607,3 +607,14 @@ ParkingLot parkingLot = new ParkingLotBuilder()
 | **Factory**  | `VehicleFactory`, `PaymentStrategyFactory`     | Centralized object creation           |
 | **Builder**  | `ParkingLotBuilder`                            | Step-by-step parking lot construction |
 | **Template** | `Vehicle` (abstract), `ParkingSpot` (abstract) | Common structure with specialization  |
+
+When do we use the State Pattern?
+
+State Pattern is appropriate when:
+
+The behavior of an object changes based on its internal state,
+and that behavior is implemented inside the same object.
+
+The State pattern is used when a single object’s behavior changes based on its internal state. This is why it fits Tic Tac Toe perfectly: the Game object behaves differently depending on the state (X’s turn, O’s turn, Game Over). For example, the same method makeMove() is valid during XTurnState or OTurnState, but invalid in GameOverState. The rules and allowed actions change based on the game’s state, and modeling this with State avoids large if/else blocks and keeps behavior cleanly encapsulated.
+
+In a Parking Lot, however, what you see is a workflow, not state-driven behavior in a single object. Steps like vehicle arrived → spot allocated → parked → payment → exit are handled by different entities (ParkingLot, ParkingSpot, Payment, Exit). Since behavior doesn’t change inside one dominant object, using State at the ParkingLot level would be forced and over-engineered. A good place where State does fit in Parking Lot is the ParkingTicket, e.g., ACTIVE → PAID → CLOSED, where methods like pay() or exit() are allowed or disallowed based on the ticket’s state.
