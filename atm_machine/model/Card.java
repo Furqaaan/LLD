@@ -1,0 +1,25 @@
+package atm_machine.model;
+
+public class Card {
+    private String cardNumber;
+    private int pin;
+    private String accountNumber;
+
+    public Card(String cardNumber, int pin, String accountNumber) {
+        this.cardNumber = cardNumber;
+        this.pin = pin;
+        this.accountNumber = accountNumber;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public boolean validatePin(int enteredPin) {
+        return this.pin == enteredPin;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+}
