@@ -273,3 +273,117 @@ manager.manageInventory();
 This pattern makes sure only one `InventoryManager` object exists and all callers share that instance.
 
 > **Pro Tip:** Singletons are easy in Java with `getInstance()`, but don’t overuse! Dependency injection frameworks can provide single instances without static access; this can help testing and flexibility when scaling.
+
+
+
+
+---
+
+## When to Use the State Pattern
+
+**The State Pattern** is appropriate when an object's behavior needs to change dramatically based on its internal state, and you want to avoid complex if-else or switch-case logic for every action.
+
+---
+
+### ✅ State Pattern: Vending Machine Example
+
+**Why is State Pattern ideal for a vending machine?**
+
+A vending machine’s actions (accept coin, select item, dispense) mean different things depending on its state in the workflow:
+
+| Current State   | Insert Coin   | Select Item   | Dispense        |
+|:--------------- |:------------- |:------------- |:--------------- |
+| NoCoin          | Accept coin   | ❌ Not allowed| ❌              |
+| HasCoin         | Add coin      | Allow select  | ❌              |
+| ItemSelected    | ❌            | ❌            | Dispense        |
+| OutOfStock      | Reject coin   | Reject select | ❌              |
+
+- **Same action** can trigger different logic depending on the state (inserting coin before/after certain steps, etc.).
+- Without State Pattern, code degenerates into nested conditionals:
+
+```java
+// Smell: If-Else Hell
+if (state == NO_COIN) {
+    // do something
+} else if (state == HAS_COIN) {
+    // do something else
+} ...
+```
+
+- With State Pattern, state is an object, and actions delegate to the current state's implementation:
+
+```java
+currentState.insertCoin();
+currentState.selectItem();
+```
+
+**Benefits:**
+- Each state encapsulates behavior
+- States decide when and how to transition
+- Eliminates repetitive conditionals
+- Follows textbook State Pattern design
+
+---
+
+### 🚫 State Pattern Misfit: Parking Lot Example
+
+Now, consider a **Parking Lot**. What are its main objects?
+
+- ParkingLot
+- ParkingFloor
+- ParkingSpot
+- Ticket
+- Vehicle
+
+**Do these entities change their *behavior* based on state?**
+
+For example, a Parking Spot might be Available, Occupied, or Reserved.
+
+```java
+spot.park(vehicle);
+spot.unpark();
+```
+
+But the logic is simple:
+
+- If occupied → Don’t park
+- If free → Park
+
+That’s a basic check—*not* a dramatic shift in object behavior. There’s no complex workflow enforced by state objects; the business rules do not require encapsulating different algorithms or transitions.
+
+---
+
+#### **Comparison Table**  
+|                | Vending Machine           | Parking Lot                    |
+|:---------------|:-------------------------|:-------------------------------|
+| Workflow type  | Sequential (flow-based)  | Event-driven (flexible)        |
+| State changes  | One active state         | Many independent entities      |
+| Behavior       | State determines actions | Data/rules determine actions   |
+| Good for State?| ✅ Yes                   | 🚫 No                          |
+
+---
+
+#### Why NOT State for Parking Lot?
+
+- Trying to force a `ParkingLotState` (e.g., `HasSpace`, `Full`) doesn’t meaningfully change method behavior—it just changes a result or message.
+- **No complex transitions or side effects based on current state.**
+- Adds unnecessary complexity (overengineering).
+
+---
+
+#### Better Patterns for Parking Lot
+
+- **Strategy Pattern:** For different pricing methods (hourly, flat, weekend).
+- **Factory Pattern:** To create vehicles or parking spots.
+- **Observer Pattern:** For real-time updates (display boards, notifications).
+- **Repository Pattern:** To manage tickets and spots.
+
+---
+
+#### Quick Interview Tip
+
+- **State Pattern:** Use for process-oriented, step-by-step flows where *one* state is “active” at a time and behavior must change accordingly.
+- **Parking Lot:** Usually modeled as a resource-management system, relying on rules and statuses—not behavioral state transitions.
+- **Exception:** You *could* use State Pattern for strict entry/exit gate flows (e.g., EntryGate → PaymentPending → ExitAllowed → Closed).
+
+---
